@@ -1,0 +1,47 @@
+import matplotlib.pyplot as plt 
+import pandas as pd
+def line_chart():
+    df = pd.read_csv('dailysteps_merged.csv' ) 
+    print(df.dtypes)
+    list1 = df['ActivityDay'].values.tolist() 
+    list2 = df['StepTotal'].values.tolist() 
+    plt.plot(list2,list1,linewidth = 1, color = 'green')
+    plt.title('Line Chart')
+    plt.xlabel('Total Steps')
+    plt.ylabel('Activity Day')
+    plt.show()
+def bar_chart():
+    df = pd.read_csv('dailyActivity_merged.csv' ) 
+    print(df.dtypes)
+    list1 = df['ActivityDate'].values.tolist() 
+    list2 = df['TotalDistance'].values.tolist() 
+    plt.bar(list2,list1,linewidth = 1, color = ['red','green'])
+    plt.title('Bar Chart')
+    plt.xlabel('Total Distance')
+    plt.ylabel('Activity Date')
+    plt.show()
+def scatter_chart():
+    df = pd.read_csv('sleepDay_merged.csv' ) 
+    print(df.dtypes)
+    list1 = df['SleepDay'].values.tolist() 
+    list2 = df['TotalTimeInBed'].values.tolist() 
+    plt.scatter(list2,list1)
+    plt.title('Scatter Chart')
+    plt.xlabel('Total Time in Bed')
+    plt.ylabel('Sleep Day')
+    plt.show()
+def pie_chart():
+    df = pd.read_csv('hourlySteps_merged.csv' ) 
+    print(df.dtypes)
+    list2 =df[df['ActivityHour'].str[:9]=='4/12/2016']['StepTotal'].values.tolist()
+    plt.pie(list2)
+    plt.title('Scatter Chart')
+    plt.xlabel('Hourly Steps')
+    plt.show()
+def main():
+    line_chart()
+    bar_chart()
+    scatter_chart()
+    pie_chart()
+if __name__ == "__main__":
+    main()
